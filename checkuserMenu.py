@@ -29,13 +29,13 @@ def obter_do_cache(chave):
 
 def carregar_cache():
     try:
-        with open('/root/checkusers/cache.json', 'r') as arquivo:
+        with open('/root/checkuser/cache.json', 'r') as arquivo:
             return json.load(arquivo)
     except (FileNotFoundError, json.JSONDecodeError):
         return {} 
     
 def salvar_cache(cache):
-    with open('/root/checkusers/cache.json', 'w') as arquivo:
+    with open('/root/checkuser/cache.json', 'w') as arquivo:
         json.dump(cache, arquivo)
 
 
@@ -72,7 +72,7 @@ def verificar_processo(nome_processo):
     return False
 
 
-nome_do_script = "/root/checkusers/checkusers.py"
+nome_do_script = "/root/checkuser/checkusers.py"
 
 
 
@@ -93,8 +93,8 @@ if __name__ == "__main__":
 
         print(f" {cor_vermelha}Selecione uma opção :{cor_reset}")
         print(f" {cor_verde} 1 - Matar porta 5454{cor_reset}")
-        print(f" {cor_verde} 2 - Iniciar checkusers{cor_reset}")
-        print(f" {cor_verde} 3 - Parar checkusers{cor_reset}")
+        print(f" {cor_verde} 2 - Iniciar checkuser{cor_reset}")
+        print(f" {cor_verde} 3 - Parar checkuser{cor_reset}")
         print(f" {cor_verde} 4 - Pegar o Link{cor_reset}")
         print(f" {cor_verde} 5 - Sobre{cor_reset}")
         print(f" {cor_vermelha} 0 - Sair do menu{cor_reset}")
@@ -111,7 +111,7 @@ if __name__ == "__main__":
 
         if option == "1":
 
-            print(f"\n {cor_vermelha} Porta 5454 liberada, volte ao menu e inicie o checkusers na porta 5454 {cor_reset}")
+            print(f"\n {cor_vermelha} Porta 5454 liberada, volte ao menu e inicie o checkuser na porta 5454 {cor_reset}")
             
             command = "sudo kill -9 $(lsof -t -i:5454)"
             subprocess.run(command, shell=True)
@@ -135,14 +135,14 @@ if __name__ == "__main__":
             if verificar_processo(nome_do_script):
 
                 try:
-                    subprocess.run(f'pkill -9 -f "/root/checkusers/checkusers.py"', shell=True)
+                    subprocess.run(f'pkill -9 -f "/root/checkuser/checkusers.py"', shell=True)
 
                         
                 except subprocess.CalledProcessError:
                     print("Erro ao executar o comando.")
                 remover_do_cache("porta")
             else: 
-                print(" {cor_vermelha} O checkusers não está ativo.{cor_reset}")
+                print(" {cor_vermelha} O checkuser não está ativo.{cor_reset}")
             
 
 
@@ -154,7 +154,7 @@ if __name__ == "__main__":
                 print("")
                 ip = get_public_ip()
                 porta = obter_do_cache("porta")
-                print(f" {cor_amarela} Conecta4G/5G - http://{ip}:{porta}/checkusers{cor_reset} ")
+                print(f" {cor_amarela} Conecta4G/5G - http://{ip}:{porta}/checkuser{cor_reset} ")
                 print(f" {cor_amarela} DtunnelMod - http://{ip}:{porta}/dtmod{cor_reset}  ")
                 print(f" {cor_amarela} GltunnelMod - http://{ip}:{porta}/gl{cor_reset} ")
                 print(f" {cor_amarela} AnyVpnMod - http://{ip}:{porta}/anymod{cor_reset} ")
@@ -165,23 +165,23 @@ if __name__ == "__main__":
                 print("")
                 print(f" {cor_amarela}Link Conecta4G/5G abaixo :{cor_reset} ")
                 print("")
-                print(f"  {cor_verde}https://cybercoari.com.br/checkusers.php?url=http://{ip}:{porta}/checkusers{cor_reset} ")
+                print(f"  {cor_verde}https://cybercoari.com.br/checkuser.php?url=http://{ip}:{porta}/checkuser{cor_reset} ")
                 print("")
                 print(f" {cor_amarela}Link DtunnelMod abaixo :{cor_reset} ")
                 print("")
-                print(f"  {cor_verde}https://cybercoari.com.br/checkusers.php?url=http://{ip}:{porta}/dtmod{cor_reset}  ")
+                print(f"  {cor_verde}https://cybercoari.com.br/checkuser.php?url=http://{ip}:{porta}/dtmod{cor_reset}  ")
                 print("")
                 print(f" {cor_amarela}Link GltunnelMod abaixo :{cor_reset} ")
                 print("")
-                print(f"  {cor_verde}https://cybercoari.com.br/checkusers.php?url=http://{ip}:{porta}/gl{cor_reset} ")
+                print(f"  {cor_verde}https://cybercoari.com.br/checkuser.php?url=http://{ip}:{porta}/gl{cor_reset} ")
                 print("")
                 print(f" {cor_amarela}Link AnyVpnMod abaixo :{cor_reset} ")
                 print("")
-                print(f"  {cor_verde}https://cybercoari.com.br/checkusers.php?url=http://{ip}:{porta}/anymod{cor_reset} ")
+                print(f"  {cor_verde}https://cybercoari.com.br/checkuser.php?url=http://{ip}:{porta}/anymod{cor_reset} ")
                 print("")
                 print(f" {cor_amarela}Link AtxTunnel abaixo :{cor_reset} ")
                 print("")
-                print(f"  {cor_verde}https://cybercoari.com.br/checkusers.php?url=http://{ip}:{porta}/atx{cor_reset} ")
+                print(f"  {cor_verde}https://cybercoari.com.br/checkuser.php?url=http://{ip}:{porta}/atx{cor_reset} ")
                 print("")
                 input(f" {cor_vermelha} Pressione a tecla enter para voltar ao menu {cor_reset}")
 
@@ -193,8 +193,8 @@ if __name__ == "__main__":
 
         elif option == "5":
             os.system('clear')
-            print(f"{cor_amarela}Olá, esse é um multi-checkusers criado por : {cor_reset}{cor_vermelha}@UlekBR{cor_reset}{cor_amarela} e melhorado por : {cor_reset} {cor_vermelha}\n@donomodderajuda{cor_reset}")
-            print(f"{cor_amarela} Com esse checkusers venho trazendo a possibilidade de usar em diversos apps{cor_reset}")
+            print(f"{cor_amarela}Olá, esse é um multi-checkuser criado por : {cor_reset}{cor_vermelha}@UlekBR{cor_reset}{cor_amarela} e melhorado por : {cor_reset} {cor_vermelha}\n@donomodderajuda{cor_reset}")
+            print(f"{cor_amarela} Com esse checkuser venho trazendo a possibilidade de usar em diversos apps{cor_reset}")
             print(f"{cor_vermelha} Apps como : {cor_reset}")
             print(f" - Conecta4G/5G")
             print(f" - DtunnelMod")
